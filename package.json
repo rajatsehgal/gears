@@ -1,0 +1,35 @@
+{
+  "name": "@rajatsehgal/gears",
+  "version": "0.0.1",
+  "description": "A module that provides a couple of react components that can be used as a busy/progress indicator",
+  "scripts": {
+    "start": "http-server . -s",
+    "build": "webpack -d",
+    "watch": "webpack -d --watch",
+    "prod": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:rajatsehgal/gears.git"
+  },
+  "keywords": [
+    "busy",
+    "progress"
+  ],
+  "author": "rajatsehgal <rajatsehgal1988@gmail.com> (rajatsehgal.github.io)",
+  "license": "ISC",
+  "homepage": "https://github.com/rajatsehgal/gears",
+  "dependencies": {
+    "radium": "^0.16.6",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
+  },
+  "devDependencies": {
+    "babel-core": "^6.6.5",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "http-server": "^0.9.0",
+    "webpack": "^1.12.14"
+  }
+}
