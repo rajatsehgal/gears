@@ -11,6 +11,16 @@ ReactDom.render((
       height: '100%'
     }}
   >
+    <h1>My App</h1>
+
+    <p>
+      I am the main content and I am currently overlayed with the Busy Gears so I'm faded out a
+      little.
+    </p>
+    <p>
+      The Busy gears are vertically and horizontally centered on the page.
+    </p>
+
     <BusyGears />
   </StyleRoot>
 ), document.getElementById('demo'));
