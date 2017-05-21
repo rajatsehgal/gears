@@ -1,6 +1,6 @@
 {
   "name": "@rajatsehgal/gears",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A module that provides a couple of react components that can be used as a busy/progress indicator",
   "scripts": {
     "start": "http-server . -s",
