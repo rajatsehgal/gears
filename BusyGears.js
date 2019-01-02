@@ -1,64 +1,60 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Gear from './Gear';
-import Radium from 'radium';
+import './BusyGear.js';
 
-const BusyGears = ({busy}) => (
-  <div
-    style={{
-      height: '100%',
-      width: '100%',
-      overflow: 'hidden',
-      userSelect: 'none',
-      top: 0,
-      left: 0,
-      background: 'rgba(255, 255, 255, 0.5)',
-      zIndex: 999,
-      display: busy ? 'block' : 'none',
-      position: 'absolute'
-    }}
-  >
-    <div
-      style={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)'
-      }}
-    >
-      <div
-        style={{
-          display: 'inline-block',
-          verticalAlign: 'middle'
-        }}
-      >
-        <Gear
-          spinDir="clockwise"
+const template = document.createElement('template');
+template.innerHTML = `
+<style>
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 999;
+  position: absolute;
+}
 
-        />
-      </div>
-      <div
-        style={{
-          display: 'inline-block',
-          verticalAlign: 'middle',
-          marginLeft: -20,
-          marginTop: 65
-        }}
-      >
-        <Gear
-          spinDir="counterclockwise"
-        />
-      </div>
-    </div>
+:host([hidden]) {
+  display: none;
+}
+
+#container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#clockwiseWrapper {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#counterclockwiseWrapper {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: -20px;
+  margin-top: 65px;
+}
+</style>
+<div id="container">
+  <div id="clockwiseWrapper">
+    <busy-gear spindir="clockwise"></busy-gear>
   </div>
-);
+  <div id="counterclockwiseWrapper">
+    <busy-gear spindir="counterclockwise"></busy-gear>
+  </div>
+</div>
+`;
 
-BusyGears.propTypes = {
-  busy: PropTypes.bool
-};
+export default class BusyGears extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+}
 
-BusyGears.defaultProps = {
-  busy: true
-};
-
-export default Radium(BusyGears);
+window.customElements.define('busy-gears', BusyGears);
